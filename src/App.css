@@ -1,35 +1,4 @@
-.header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-p{
-  margin: 0;
-}
-.title{
-  font-size: 1.5rem;
-  margin: 0;
-}
-.title-carrinho{
-  margin: 0;
-}
-.button-carrinho{
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-}
 
-.button-carrinho div:first-child {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-img{
-  padding-left: 16px;
-}
 @media (max-width: 768px) {
   body{
     margin: 0;

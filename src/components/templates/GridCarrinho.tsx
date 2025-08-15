@@ -64,10 +64,13 @@ function GridCarrinho() {
       </div>
 
       <div className="separador"></div>
+      
 
       <div className="finalizar">
-        
-        <button onClick={() => navigate('/compra-finalizada')}>FINALIZAR PEDIDO</button>
+        <div className='botao-footer'>
+          <button onClick={() => navigate('/compra-finalizada')}>FINALIZAR PEDIDO</button>
+          <button className='botao-continuar' onClick={() => navigate('/')}>CONTINUAR COMPRANDO</button>
+        </div>
         <div className="total">
           <label>TOTAL</label>
           <p>R$ {total.toFixed(2)}</p>
