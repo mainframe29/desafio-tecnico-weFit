@@ -14,13 +14,13 @@ function Header() {
             <div className='title'>
             <h3>WeMovies</h3>
             </div>
-            <div className='button-carrinho'>
+            <div className='button-carrinho' onClick={() => navigate('/carrinho')} >
             <div>
                 <p className='title-carrinho'>Meu Carrinho</p>
                 <p> {<span>{totalItens}</span>} {totalItens > 1 ? "itens" : "item" }</p>
             </div>
             <div>
-                <img src={cartLogo} onClick={() => navigate('/carrinho')} />
+                <img src={cartLogo} />
             </div>
             </div>
         </div>
