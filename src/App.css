@@ -33,6 +33,6 @@ img{
 @media (max-width: 768px) {
   body{
     margin: 0;
-    padding: 16px 16px 16px 16px;
+    padding: 0;
   }
 }
