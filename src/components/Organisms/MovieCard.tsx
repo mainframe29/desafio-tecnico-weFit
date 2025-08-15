@@ -16,7 +16,7 @@ function MovieCard({produto}:Props) {
     <div className='MovieCard'>
       <img className='MovieImg' src={produto.image} />
       <p className='MovieTitle'>{produto.title}</p>
-      <p className='MoviePrice'> R$ {produto.price}</p>
+      <p className='MoviePrice'> R$ {produto.price.toFixed(2)}</p>
       <button className={quantidade > 0 ? "MovieButton-success" : "MovieButton"}   onClick={() => addToCart(produto)} ><img src={AddCarrinho}/><span>{quantidade}</span> ADICIONAR AO CARRINHO</button>
     </div>
   )
