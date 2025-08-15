@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
 import './CompraFinalizada.css'
 import Man from './../../assets/man.svg'
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { useEffect } from 'react';
 
 function CompraFinalizada() {
   const { clearCart } = useCart();

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import MovieCard from '../Organisms/movieCard'
+import { useEffect, useState } from 'react'
 import './GridFilmes.css'
-import axios from 'axios';
 import { getFilmes } from '../../services/filmeService';
 import ListaVazia from './ListaVazia';
+import MovieCard from '../Organisms/MovieCard';
 
 interface Produto {
   id: number;

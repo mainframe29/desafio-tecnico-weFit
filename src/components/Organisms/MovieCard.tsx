@@ -1,4 +1,3 @@
-import React from 'react'
 import AddCarrinho from './../../assets/addCarrinho.svg'
 import './MovieCard.css'
 import type { Produto } from '../../models/Produto';

@@ -1,4 +1,3 @@
-import React from 'react'
 import './ListaVazia.css'
 import Woman from './../../assets/Group.svg'
 import { useNavigate } from 'react-router-dom';

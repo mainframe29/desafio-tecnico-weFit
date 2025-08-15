@@ -1,4 +1,3 @@
-import React from 'react'
 import cartLogo from './../../assets/carrinho.svg'
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./QtdButton.css";
 import Somar from "./../../assets/addButton.svg"
 import Subtrair from "./../../assets/minusButton.svg"
