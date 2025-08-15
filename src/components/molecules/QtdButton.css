@@ -1,0 +1,17 @@
+.contador {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-quantidade {
+  width: 62px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 16px;
+  margin-left: 20px;
+  background-color: white;
+  color: black;
+}
