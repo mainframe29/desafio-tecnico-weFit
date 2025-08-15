@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React from 'react'
 import DeleteButton from './../../assets/delete.svg'
 import QtdButton from '../molecules/QtdButton'
 import './GridCarrinho.css'
@@ -6,51 +6,58 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import ListaVazia from './ListaVazia';
 
-
-
 function GridCarrinho() {
   const navigate = useNavigate();
   const { cartItems, removeFromCart, total } = useCart();
 
-
   if (cartItems.length === 0) {
-    return <ListaVazia />; 
+    return <ListaVazia />;
   }
 
   return (
     <div className="grid">
       <div className="tabela">
-        {/* Cabeçalho */}
-        <div>PRODUTO</div>
-        <div>QTD</div>
-        <div>SUBTOTAL</div>
-        <div></div>
+        {/* Cabeçalho - só visível em telas grandes */}
+        <div className="header desktop-only">PRODUTO</div>
+        <div className="header desktop-only">QTD</div>
+        <div className="header">SUBTOTAL</div>
+        <div className="header desktop-only"></div>
 
-        {/* Linhas */}
         {cartItems.map((item) => (
           <React.Fragment key={item.produto.id}>
-            {/* Coluna 1 - Produto */}
+            {/* Produto */}
             <div className="col-produto">
               <img src={item.produto.image} alt={item.produto.title} width="91px" />
-              <div>
-                <p>{item.produto.title}</p>
-                <p>R$ {item.produto.price.toFixed(2)}</p>
+              <div className="produto-info">
+                <div className="titulo-preco">
+                  <p>{item.produto.title}</p>
+                  <p>R$ {item.produto.price.toFixed(2)}</p>
+                </div>
+                {/* Quantidade - no mobile fica logo abaixo */}
+                <div className="col-qtd qtd-mobile">
+                  <QtdButton produto={item.produto} />
+                </div>
               </div>
             </div>
 
-            {/* Coluna 2 - Quantidade */}
-            <div className="col-qtd">
-              <QtdButton produto= {item.produto} />
+            {/* Quantidade - apenas desktop */}
+            <div className="col-qtd desktop-only">
+              <QtdButton produto={item.produto} />
             </div>
 
-            {/* Coluna 3 - Subtotal */}
+            {/* Subtotal */}
             <div className="col-subtotal">
+              <span className="label-mobile">SUBTOTAL</span>
               R$ {(item.produto.price * item.quantidade).toFixed(2)}
             </div>
 
-            {/* Coluna 4 - Botão deletar */}
+            {/* Deletar */}
             <div className="col-delete">
-              <img src={DeleteButton} onClick={() => removeFromCart(item.produto.id)} alt="Remover" />
+              <img
+                src={DeleteButton}
+                onClick={() => removeFromCart(item.produto.id)}
+                alt="Remover"
+              />
             </div>
           </React.Fragment>
         ))}
@@ -59,6 +66,7 @@ function GridCarrinho() {
       <div className="separador"></div>
 
       <div className="finalizar">
+        
         <button onClick={() => navigate('/compra-finalizada')}>FINALIZAR PEDIDO</button>
         <div className="total">
           <label>TOTAL</label>

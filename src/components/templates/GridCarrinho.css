@@ -6,13 +6,13 @@
   gap: 24px;
   color: black;
   border-radius: 4px;
-  padding: 24px 24px 0 24px; /* reduz padding-bottom para 16px */
+  padding: 24px 24px 0 24px;
 }
 
 /* Tabela de produtos */
 .tabela {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr auto; /* Produto maior, Qtd e Subtotal médios, delete pequeno */
+  grid-template-columns: 2fr 1fr 1fr auto;
   column-gap: 24px;
   row-gap: 16px;
   align-items: center;
@@ -31,13 +31,24 @@
   gap: 16px;
 }
 
+.col-produto p {
+  margin: 0;
+}
+
 /* Colunas Qtd, Subtotal e Delete */
 .col-qtd,
 .col-subtotal,
 .col-delete {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
+  font-weight: bold;
+}
+.label-mobile{
+  display: none;
+}
+.qtd-mobile{
+  display: none;
 }
 
 /* Separador */
@@ -53,7 +64,7 @@
   justify-content: space-between;
   gap: 16px;
   margin-top: 16px;
-  flex-wrap: wrap; /* garante empilhamento em telas pequenas */
+  flex-wrap: wrap;
 }
 
 /* Botão finalizar */
@@ -71,7 +82,7 @@
   display: flex;
   gap: 10px;
   font-size: x-large;
-  align-items: start; /* alinha label e preço verticalmente */
+  align-items: start;
 }
 
 label {
@@ -82,25 +93,93 @@ label {
 
 /* Responsividade */
 @media (max-width: 768px) {
+  .grid {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: black;
+  border-radius: 4px;
+  padding: 24px 12px 0 6px;
+}
+  /* Remove o grid fixo e vira empilhado */
   .tabela {
-    grid-template-columns: 1fr; /* Empilha no mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .col-produto,
-  .col-qtd,
+  /* Esconde os cabeçalhos */
+  .tabela > div:nth-child(-n+4) {
+    display: none;
+  }
+
+  /* Cada item vira um bloco */
+  .col-produto {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .col-produto img {
+    width: 70px;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  /* Título e preço lado a lado */
+  .col-produto div {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    flex-wrap: wrap;
+  }
+
+  /* Quantidade vem logo abaixo do título/preço */
+  .col-qtd {
+    display: none;
+  }
+  .qtd-mobile{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    
+    img{
+      width: 10%;
+    }
+  }
+
+  /* Subtotal e botão deletar lado a lado */
   .col-subtotal,
   .col-delete {
-    justify-content: flex-start; /* evita centralização estranha */
-    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 82px; /* alinhado com quantidade */
+    align-items: end;
+  }
+  .label-mobile{
+  display: flex;
+  flex-direction: column;
+  color: gray;
+}
+
+  .col-subtotal {
+    font-weight: bold;
   }
 
+  /* Finalizar: botão embaixo do total */
   .finalizar {
-    flex-direction: column; /* empilha botão e total */
+    flex-direction: column-reverse;
     align-items: stretch;
+    gap: 16px;
+  }
+
+  .finalizar button {
+    width: 100%;
   }
 
   .finalizar .total {
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 }
-

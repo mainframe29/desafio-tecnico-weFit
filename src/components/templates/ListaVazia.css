@@ -6,13 +6,15 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 24px;
+    min-height: 60vh;
+    padding: 40px 20px;
 }
 button{
     background-color: #009EDD;
     margin-bottom: 144px;
 }
 .woman{
-    width: 247px;
+    max-width: 247px;
     border-bottom: 1px solid black;
     margin-bottom: 24px;
 }

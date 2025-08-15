@@ -2,6 +2,7 @@ import React from 'react'
 import cartLogo from './../../assets/carrinho.svg'
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import './Header.css'
 
 function Header() {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ function Header() {
             </div>
             <div className='button-carrinho'>
             <div>
-                <p>Meu Carrinho</p>
+                <p className='title-carrinho'>Meu Carrinho</p>
                 <p> {<span>{totalItens}</span>} {totalItens > 1 ? "itens" : "item" }</p>
             </div>
             <div>
