@@ -7,7 +7,6 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin: 0;
     border-radius: 4px;
 }
 .MovieImg{
@@ -26,4 +25,16 @@
 }
 p{
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .MovieCard{
+        padding: 16px 0 16px 0;
+    }
+    .MovieButton{
+        width: 95%;
+    }
+    .MovieButton-success{
+        width: 95%;
+    }
 }

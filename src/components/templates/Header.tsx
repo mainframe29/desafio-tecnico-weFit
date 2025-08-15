@@ -11,7 +11,7 @@ function Header() {
     const totalItens = cartItems.reduce((sum, item) => sum + item.quantidade, 0);
     return (
         <div className="header">
-            <div className='title'>
+            <div className='title-header'>
             <h3>WeMovies</h3>
             </div>
             <div className='button-carrinho' onClick={() => navigate('/carrinho')} >
