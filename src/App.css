@@ -32,7 +32,7 @@ img{
 }
 @media (max-width: 768px) {
   body{
-    margin: 0;
+    margin: 16px;
     padding: 0;
   }
 }
