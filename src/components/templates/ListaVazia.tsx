@@ -1,5 +1,5 @@
 import './ListaVazia.css'
-import Woman from './../../assets/Group.svg'
+import Woman from './../../assets/group.svg'
 import { useNavigate } from 'react-router-dom';
 
 function ListaVazia() {
