@@ -110,6 +110,7 @@
   .cart-card-info{
     .img-delete{
       width: 6%;
+      border-radius: 0;
     }
   }
 
