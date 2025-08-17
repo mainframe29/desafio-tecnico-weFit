@@ -15,65 +15,76 @@ function GridCarrinho() {
   }
 
   return (
-    <div className="grid">
-      <div className="tabela">
-        {/* Cabeçalho - só visível em telas grandes */}
-        <div className="header desktop-only">PRODUTO</div>
-        <div className="header desktop-only">QTD</div>
-        <div className="header">SUBTOTAL</div>
-        <div className="header desktop-only"></div>
-
+    <div className="cart-container">
+      {/* Layout para desktop */}
+      <div className="cart-desktop">
+        <div className="cart-header">
+          <span>PRODUTO</span>
+          <span>QTD</span>
+          <span>SUBTOTAL</span>
+          <span></span>
+        </div>
         {cartItems.map((item) => (
-          <React.Fragment key={item.produto.id}>
-            {/* Produto */}
-            <div className="col-produto">
-              <img src={item.produto.image} alt={item.produto.title} width="91px" />
-              <div className="produto-info">
-                <div className="titulo-preco">
-                  <p>{item.produto.title}</p>
-                  <p>R$ {item.produto.price.toFixed(2)}</p>
-                </div>
-                {/* Quantidade - no mobile fica logo abaixo */}
-                <div className="col-qtd qtd-mobile">
-                  <QtdButton produto={item.produto} />
-                </div>
+          <div key={item.produto.id} className="cart-row">
+            <div className="cart-product">
+              <img src={item.produto.image} alt={item.produto.title} />
+              <div>
+                <p>{item.produto.title}</p>
+                <p>R$ {item.produto.price.toFixed(2)}</p>
               </div>
             </div>
-
-            {/* Quantidade - apenas desktop */}
-            <div className="col-qtd desktop-only">
-              <QtdButton produto={item.produto} />
+            <div className="cart-qty">
+              <QtdButton produto={item.produto}/>
             </div>
+            <div className="cart-subtotal">R$ {(item.produto.price * item.quantidade).toFixed(2)}</div>
+            <img
+                src={DeleteButton}
+                onClick={() => removeFromCart(item.produto.id)}
+                alt="Remover"
+              />
+          </div>
+        ))}
+        <div className="cart-footer">
+          <div className='buttons-footer'>
+          <button onClick={() => navigate('/compra-finalizada')}>FINALIZAR PEDIDO</button>
+          <button className='btn-continuar' onClick={() => navigate('/')}>CONTINUAR COMPRANDO</button>
+          </div>
+          <span className="cart-total"><span className='label-total-desktop'>TOTAL</span> R$ {total.toFixed(2)}</span>
+        </div>
+      </div>
 
-            {/* Subtotal */}
-            <div className="col-subtotal">
-              <span className="label-mobile">SUBTOTAL</span>
-              R$ {(item.produto.price * item.quantidade).toFixed(2)}
-            </div>
-
-            {/* Deletar */}
-            <div className="col-delete">
+      {/* Layout para mobile */}
+      <div className="cart-mobile">
+        {cartItems.map((item) => (
+          <div key={item.produto.id} className="cart-card">
+            <div className="cart-card-info">
+              <img src={item.produto.image} alt={item.produto.title} />
+              <div>
+                <p>{item.produto.title}</p>
+                <p>R$ {item.produto.price.toFixed(2)}</p>
+              </div>
               <img
+                className='img-delete'
                 src={DeleteButton}
                 onClick={() => removeFromCart(item.produto.id)}
                 alt="Remover"
               />
             </div>
-          </React.Fragment>
+            <div className="cart-card-actions">
+              <div className="cart-qty">
+                <QtdButton produto={item.produto}/>
+              </div>
+              <p>SUBTOTAL R$ {(item.produto.price * item.quantidade).toFixed(2)}</p>
+            </div>
+          </div>
         ))}
-      </div>
-
-      <div className="separador"></div>
-      
-
-      <div className="finalizar">
-        <div className='botao-footer'>
-          <button onClick={() => navigate('/compra-finalizada')}>FINALIZAR PEDIDO</button>
-          <button className='botao-continuar' onClick={() => navigate('/')}>CONTINUAR COMPRANDO</button>
-        </div>
-        <div className="total">
-          <label>TOTAL</label>
-          <p>R$ {total.toFixed(2)}</p>
+        <div className="cart-footer">
+          <div className="cart-total-conteiner">
+            <span className='label-total'>TOTAL</span>
+            <span className="cart-total"> R$ {total.toFixed(2)}</span>
+          </div>
+          <button className='btn-continuar' onClick={() => navigate('/')}>CONTINUAR COMPRANDO</button>
+          <button className='btn-finalizar' onClick={() => navigate('/compra-finalizada')}>FINALIZAR PEDIDO</button>
         </div>
       </div>
     </div>
