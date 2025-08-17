@@ -1,4 +1,3 @@
-import React from 'react'
 import DeleteButton from './../../assets/delete.svg'
 import QtdButton from '../molecules/QtdButton'
 import './GridCarrinho.css'
